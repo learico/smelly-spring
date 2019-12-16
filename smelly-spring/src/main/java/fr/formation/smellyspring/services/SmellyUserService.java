@@ -7,7 +7,7 @@ import fr.formation.smellyspring.dtos.SmellyUserOutDto;
 
 public interface SmellyUserService {
 
-	SmellyUserOutDto getSmellyUserOutDto();
+    SmellyUserOutDto getSmellyUserOutDto();
 
-	SmellyUserOutDto create(@Valid SmellyUserInDto dto); 
+    SmellyUserOutDto create(@Valid SmellyUserInDto dto);
 }

@@ -9,17 +9,17 @@ import fr.formation.smellyspring.repositories.SmellyUserRepository;
 
 public class SmellyUserServiceImpl implements SmellyUserService {
 
-	private SmellyUserRepository repo;
+    private SmellyUserRepository repo;
 
-	@Override
-	public SmellyUserOutDto getSmellyUserOutDto() {
-		return new SmellyUserOutDto(null, "Hello smelly user!");
-	}
+    @Override
+    public SmellyUserOutDto getSmellyUserOutDto() {
+	return new SmellyUserOutDto(null, "Hello smelly user!");
+    }
 
-	@Override
-	public SmellyUserOutDto create(@Valid SmellyUserInDto dto) {
-		SmellyUser entity = SmellyUserServiceHelper.convert(dto);
-		repo.save(entity);
-		return SmellyUserServiceHelper.convert(entity);
-	}
+    @Override
+    public SmellyUserOutDto create(@Valid SmellyUserInDto dto) {
+	SmellyUser entity = SmellyUserServiceHelper.convert(dto);
+	repo.save(entity);
+	return SmellyUserServiceHelper.convert(entity);
+    }
 }

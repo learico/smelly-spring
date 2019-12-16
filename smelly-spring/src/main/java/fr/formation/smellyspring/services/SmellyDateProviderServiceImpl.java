@@ -8,14 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class SmellyDateProviderServiceImpl implements SmellyDateProviderService {
 
-	@Override
-	public LocalDate getLocalDate() {
-		return LocalDate.now();
-	}
+    @Override
+    public LocalDate getLocalDate() {
+	return LocalDate.now();
+    }
 
-	@Override
-	public LocalDateTime getLocalDateTime() {
-		throw new IllegalArgumentException("well, not supported!");
-	}
-
+    @Override
+    public LocalDateTime getLocalDateTime() {
+	throw new IllegalArgumentException("well, not supported!");
+    }
 }

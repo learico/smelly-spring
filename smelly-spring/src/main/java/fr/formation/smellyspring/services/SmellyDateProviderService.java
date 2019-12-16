@@ -5,8 +5,7 @@ import java.time.LocalDateTime;
 
 public interface SmellyDateProviderService {
 
-	LocalDate getLocalDate();
+    LocalDate getLocalDate();
 
-	LocalDateTime getLocalDateTime();
-
+    LocalDateTime getLocalDateTime();
 }

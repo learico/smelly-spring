@@ -19,36 +19,34 @@ import fr.formation.smellyspring.services.SmellyDateProviderService;
 @RequestMapping("/smellyDate")
 public class SmellyDateProviderController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger("MY_LOGGER");
+    private static final Logger LOGGER = LoggerFactory.getLogger("MY_LOGGER");
+    private final SmellyDateProviderService service;
 
-	private final SmellyDateProviderService service;
+    protected SmellyDateProviderController(
+	    @Qualifier("smellyDateTimeProviderServiceImpl") SmellyDateProviderService service) {
+	this.service = service;
+    }
 
-	protected SmellyDateProviderController(
-			@Qualifier("smellyDateTimeProviderServiceImpl") SmellyDateProviderService service) {
-		this.service = service;
+    @GetMapping("/localDate")
+    public LocalDate getLocalDate() {
+	LOGGER.trace("Reached \"GET /localDate\"");
+	LocalDate result = null;
+	try {
+	    result = service.getLocalDate();
+	    LOGGER.trace("Returned from service.getLocalDate()");
+	} catch (UnsupportedOperationException e) {
+	    LOGGER.error("Could not get a local date");
 	}
+	LOGGER.trace("Returning local date=" + result);
+	return result;
+    }
 
-	@GetMapping("/localDate")
-	public LocalDate getLocalDate() {
-		LOGGER.trace("Reached \"GET /localDate\"");
-		LocalDate result = null;
-		try {
-			result = service.getLocalDate();
-			LOGGER.trace("Returned from service.getLocalDate()");
-		} catch (UnsupportedOperationException e) {
-			LOGGER.error("Could not get a local date");
-		}
-		LOGGER.trace("Returning local date=" + result);
-		return result;
-	}
-
-	@GetMapping("/localDateTime")
-	public LocalDateTime getLocalDateTime() {
-		LOGGER.trace("Reached \"GET /localDateTime\"");
-		LocalDateTime result = service.getLocalDateTime();
-		LOGGER.trace("Returned from service.getLocalDateTime()");
-		LOGGER.trace("Returning local date time=" + result);
-		return result;
-	}
-
+    @GetMapping("/localDateTime")
+    public LocalDateTime getLocalDateTime() {
+	LOGGER.trace("Reached \"GET /localDateTime\"");
+	LocalDateTime result = service.getLocalDateTime();
+	LOGGER.trace("Returned from service.getLocalDateTime()");
+	LOGGER.trace("Returning local date time=" + result);
+	return result;
+    }
 }
